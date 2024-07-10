@@ -10,7 +10,7 @@ export default function CourseStatus() {
         <br></br> 
         <button>Choose Home Page</button>
         <br></br>
-        <button>View Course Notifications</button>
+        <button>View Course Stream</button>
         <br></br>
         <button>New Annoncement</button>
         <br></br>
