@@ -1,10 +1,15 @@
+import { BsGripVertical} from "react-icons/bs";
+import ModulesControls from "./ModulesControls";
 export default function Modules() {
   return (
     <div>
       {/* Collapse All button, View Progress button, etc. */}
       <ul id="wd-modules">
         <li className="wd-module">
-          <div className="wd-title">Week 1, Lecture 1 - Course Introduction, Syllabus, Agenda</div>
+        <div className="wd-title p-3 ps-2 bg-secondary">
+        <BsGripVertical className="me-2 fs-3" />
+Week 1</div>
+<ModulesControls />
           <ul className="wd-lessons">
             <li className="wd-lesson">
               <span className="wd-title">LEARNING OBJECTIVES</span>
