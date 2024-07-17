@@ -2,6 +2,7 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
+import "./index.css"
 export default function KanbasNavigation() {
   return (
 
@@ -39,7 +40,7 @@ export default function KanbasNavigation() {
                    bg-black text-center border-0">
         <FaInbox className="fs-1 text-danger" /><br />
         Inbox </a>
-        <a id="wd-course-link" href="#/Kanbas/Labs"
+        <a id="wd-course-link" href="#/Labs"
         className="list-group-item text-white
                    bg-black text-center border-0">
         <LiaCogSolid className="fs-1 text-danger" /><br />

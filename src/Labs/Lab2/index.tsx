@@ -91,7 +91,7 @@ export default function Lab2() {
       <BootstrapList />
       <BootstrapForms />
       <BootstrapNavigation />
-   
+      <h1 className="asd" value="zxc">I'm white on red</h1>
     </div>
   );
 }
