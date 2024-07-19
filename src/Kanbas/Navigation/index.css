@@ -1,6 +1,12 @@
-#wd-courses-navigation > .list-group-item.active {
+#wd-kanbas-navigation > .wd-neu-link > .list-group-item.active {
     color: black;
     background-color: white;
     border-left: 3px solid black !important;
+  }
+  
+  @media (min-width: 768px) {
+    #wd-kanbas .wd-main-content-offset {
+      padding-left: 140px !important;
+    }
   }
   

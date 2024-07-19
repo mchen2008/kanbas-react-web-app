@@ -46,8 +46,6 @@ export default function KanbasNavigation() {
         <LiaCogSolid className="fs-1 text-danger" /><br />
         Labs </a>
 
-
-
     </div>
  
 );}

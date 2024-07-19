@@ -1,3 +1,4 @@
+import "./index.css"
 export default function Dashboard() {
   return (
     <div id="wd-dashboard">
@@ -7,11 +8,11 @@ export default function Dashboard() {
         <div id="wd-dashboard-courses" className="row">
     <div className="row row-cols-1 row-cols-md-5 g-4">
       
-      <div className="wd-dashboard-course col" style={{ width: "250px", height: "250px"}}>
-        <div className="card">
+      <div className="wd-dashboard-course col mt-4 mb-4" style={{ width: "250px"}}>
+        <div className="card h-100" >
           <a className="wd-dashboard-course-link text-decoration-none text-dark"
              href="#/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width={200} height={100}/>
+            <img className="card-img-top img-fluid" src="/images/react.png" width="100%" />
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
@@ -26,11 +27,11 @@ export default function Dashboard() {
       </div>
 
 
-      <div className="wd-dashboard-course col" style={{ width: "250px", height: "250px"}}>
-        <div className="card">
+      <div className="wd-dashboard-course col mt-4 mb-4" style={{ width: "250px"}}>
+        <div className="card h-100">
           <a className="wd-dashboard-course-link text-decoration-none text-dark"
              href="#/Kanbas/Courses/2345/Home">
-            <img src="/images/algorithms.jpg" width={150} height={125}/>
+            <img src="/images/algorithm.jpg" width="100%" className="card-img-top img-fluid"/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
               CS2345 Algorithms
@@ -45,11 +46,11 @@ export default function Dashboard() {
       </div>
 
 
-      <div className="wd-dashboard-course col" style={{ width: "250px", height: "250px"}}>
-        <div className="card">
+      <div className="wd-dashboard-course col mt-4 mb-4" style={{ width: "250px"}}>
+        <div className="card h-100">
           <a className="wd-dashboard-course-link text-decoration-none text-dark"
              href="#/Kanbas/Courses/3456/Home">
-            <img src="/images/cloud.jpg" width={120} height={100}/>
+            <img src="/images/cloud.png" width="100%" className="card-img-top img-fluid"/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
               CS3456 Cloud Computing
@@ -67,11 +68,11 @@ export default function Dashboard() {
 
 
 
-        <div className="wd-dashboard-course col" style={{ width: "250px", height: "250px"}}>
-        <div className="card">
+        <div className="wd-dashboard-course col mt-4 mb-4" style={{ width: "250px"}}>
+        <div className="card h-100">
           <a className="wd-dashboard-course-link text-decoration-none text-dark"
              href="#/Kanbas/Courses/4567/Home">
-            <img src="/images/angular.png" width={150} height={125}/>
+            <img src="/images/angular.png" width="100%" className="card-img-top img-fluid"/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
               CS4567 Angular
@@ -87,11 +88,11 @@ export default function Dashboard() {
 
 
 
-      <div className="wd-dashboard-course col" style={{ width: "250px", height: "250px"}}>
-        <div className="card">
+      <div className="wd-dashboard-course col mt-4 mb-4" style={{ width: "250px"}}>
+        <div className="card h-100">
           <a className="wd-dashboard-course-link text-decoration-none text-dark"
             href="#/Kanbas/Courses/5678/Home">
-            <img src="/images/security.png" width={100}  height = {100}/>
+            <img src="/images/security.png" width="100%" className="card-img-top img-fluid"/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
               CS5678 Network Security
@@ -105,11 +106,11 @@ export default function Dashboard() {
         </div>
       </div>
 
-<div className="wd-dashboard-course col" style={{ width: "250px", height: "250px"}}>
-        <div className="card">
+<div className="wd-dashboard-course col mt-4 mb-4" style={{ width: "250px"}}>
+        <div className="card h-100">
           <a className="wd-dashboard-course-link text-decoration-none text-dark"
              href="#/Kanbas/Courses/6789/Home">
-            <img src="/images/ai.jpg" width={120} height = {100}/>
+            <img src="/images/ai.jpg" width="100%" className="card-img-top img-fluid"/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
               CS6789 Artificial Intelligence
@@ -123,11 +124,11 @@ export default function Dashboard() {
         </div>
       </div>
 
-<div className="wd-dashboard-course col" style={{ width: "250px", height: "250px"}}>
-        <div className="card">
+<div className="wd-dashboard-course col mt-4 mb-4" style={{ width: "250px"}}>
+        <div className="card h-100">
           <a className="wd-dashboard-course-link text-decoration-none text-dark"
              href="#/Kanbas/Courses/7890/Home">
-              <img src="/images/cv.png" width={150} height = {100}/>
+              <img src="/images/cv.png" width="100%" className="card-img-top img-fluid"/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
               CS7890 Computer Vision
