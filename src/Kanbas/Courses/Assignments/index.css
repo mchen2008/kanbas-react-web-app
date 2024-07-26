@@ -78,8 +78,8 @@ button {
 
 span.fa {
   position: absolute;
-  top: 70%;
-  right: 15px; 
+  top: 50%;
+  left: 5px; 
   transform: translateY(-50%);
 }
 

@@ -17,7 +17,7 @@ action="<?php echo home_url(); ?>"> */}
 
       <div className="form-group has-search col-md-5">
 
-        {/* <span className="fa fa-search form-control-feedback"></span> */}
+        <span id="wd-search" className="fa fa-search form-control-feedback"></span>
         <input type="text" className="form-control" placeholder="Search" />
       </div>
 
@@ -26,8 +26,7 @@ action="<?php echo home_url(); ?>"> */}
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Assignment
       </button>
-      {/* </div>
-      <div> */}
+
       <button id="wd-publish-all-btn" className="btn btn-lg btn-secondary  me-1 float-end"
         type="button">
         <FaPlus />

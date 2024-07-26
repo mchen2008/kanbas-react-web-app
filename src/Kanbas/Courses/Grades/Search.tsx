@@ -15,14 +15,14 @@ export default function SearchButton() {
 
         <div className="form-group has-search col-md-5">
           <label htmlFor="wd-search-students"> Student Names </label>
-          <span className="fa fa-search form-control-feedback"></span>
+          <span className="mt-2 fa fa-search form-control-feedback"></span>
           <select className="form-select" >Search Students
           </select>
         </div>
 
         <div className="form-group has-search m-3 col-md-5">
           <label htmlFor="wd-assign-names"> Assignment Names  </label>
-          <span className="fa fa-search form-control-feedback"></span>
+          <span className="mt-2 fa fa-search form-control-feedback"></span>
           <select className="form-select" >Search Assignments
           </select>
 

@@ -10,15 +10,12 @@ export default function AssignmentEditor() {
   const assignment_id = pathStrSplit[5]
   const assignments = db.assignments;
   const assignment = assignments.filter((a) => a._id== assignment_id && a.course == course_id)[0];
-  console.log("here here ")
-  console.log(assignment)
+ 
   return (
     <div>
        <label htmlFor="wd-name" className="form-label">Assignment Name</label>
       <input id="wd-name" className="form-control" value = {assignment.title} />
    
-      
-     
       <br />
       <textarea id="wd-description" className="form-control" >
         The assignment is available online Submit a link to the landing page of your Web applicaion running on
@@ -29,9 +26,6 @@ export default function AssignmentEditor() {
       </textarea>
 
       <br />
-
-
-  
 
  <EditorForm/>
 
