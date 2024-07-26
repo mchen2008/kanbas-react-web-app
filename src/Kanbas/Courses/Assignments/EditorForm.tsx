@@ -88,44 +88,47 @@ export default function EditorForm() {
         </label>
 
         <div className="col-sm-8 bg-boarder p-4" >
-        <label htmlFor="wd-assign-to">Assign to</label>
+          <label htmlFor="wd-assign-to">Assign to</label>
           <br></br>
-          <input  style={{position:"relative"}} id="wd-assign-to" className="form-control"  value={"Everyone"} />
+          <input style={{ position: "relative" }} id="wd-assign-to" className="form-control" value={"Everyone"} />
           <br />
-         
+
           <div className="form-group has-feedback col-sm-12">
-          <label htmlFor="wd-due-date">Due</label>
-          <br></br> 
-          <input type="date" className="form-control" id="wd-due-date" 
-          value={"2024-05-13"} /> 
+            <label htmlFor="wd-due-date">Due</label>
+            <br></br>
+            <input type="date" className="form-control" id="wd-due-date"
+              value={"2024-05-13"} />
 
-          <span className="fa fa-calendar form-control-feedback"></span>
+            <span className="fa fa-calendar form-control-feedback"></span>
           </div>
-          <div className = "row mt-4">
-          <div className="form-group has-feedback col-sm-6">
-          <label htmlFor="wd-available-from">Avaliable from</label>
-     
-              <input type="date" id="wd-available-from" className="form-control"  value={"2024-05-06"} />
-        
+          <div className="row mt-4">
+            <div className="form-group has-feedback col-sm-6">
+              <label htmlFor="wd-available-from">Avaliable from</label>
+
+              <input type="date" id="wd-available-from" className="form-control" value={"2024-05-06"} />
+
               <span className="fa fa-calendar form-control-feedback"></span>
-              </div>
-        <div className="form-group has-feedback col-sm-6">
-          <label htmlFor="wd-available-until">Until</label>
+            </div>
+            <div className="form-group has-feedback col-sm-6">
+              <label htmlFor="wd-available-until">Until</label>
 
-          <input type="date" id="wd-available-until"  className="form-control"  value={"2024-05-20"} />
-          <span className="fa fa-calendar form-control-feedback"></span>
-          
-    
-          </div>
+              <input type="date" id="wd-available-until" className="form-control" value={"2024-05-20"} />
+              <span className="fa fa-calendar form-control-feedback"></span>
+
+
+            </div>
           </div >
+          <br /><br />
+          <div className="float-end">
+
+            <button type="button" className="btn btn-secondary m-1">
+              Cancel </button>
+
+            <button type="button" className="btn btn-danger m-1">
+              Save </button>
+
+          </div>
         </div>
-
-
-              
-            
-      
-
-
 
       </div>
 
