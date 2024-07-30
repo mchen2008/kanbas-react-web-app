@@ -82,7 +82,7 @@ export default function EditorForm() {
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 
-      <div className="mb-3 row">
+      <div className="mb-3 row" style={{"border":"2 px solid"}}>
         <label className="col-sm-2 col-form-label">
           Assign
         </label>
@@ -99,7 +99,7 @@ export default function EditorForm() {
             <input type="date" className="form-control" id="wd-due-date"
               value={"2024-05-13"} />
 
-            <span className="fa fa-calendar form-control-feedback"></span>
+            {/* <span className="fa fa-calendar form-control-feedback"></span> */}
           </div>
           <div className="row mt-4">
             <div className="form-group has-feedback col-sm-6">
@@ -107,13 +107,13 @@ export default function EditorForm() {
 
               <input type="date" id="wd-available-from" className="form-control" value={"2024-05-06"} />
 
-              <span className="fa fa-calendar form-control-feedback"></span>
+              {/* <span className="fa fa-calendar form-control-feedback"></span> */}
             </div>
             <div className="form-group has-feedback col-sm-6">
               <label htmlFor="wd-available-until">Until</label>
 
               <input type="date" id="wd-available-until" className="form-control" value={"2024-05-20"} />
-              <span className="fa fa-calendar form-control-feedback"></span>
+              {/* <span className="fa fa-calendar form-control-feedback"></span> */}
 
 
             </div>

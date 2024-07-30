@@ -13,6 +13,16 @@ export default function Grades() {
   const course_id = pathStrSplit[3]
   const grades = db.grades;
   const users = db.users;
+  const a = [1, 2, 3]
+  console.log("testtest4")
+  const e = [4, ...a]
+const [f] = e
+console.log(f)
+  console.log(f)
+
+  const handleClick = (parameter = "Hello") => {
+    console.log(parameter)
+  }
 
   let assignment_ids = db.assignments.filter((a) => a.course == course_id).map(a=> a._id)
   const students = db.enrollments.filter((a) => a.course == course_id).map(a=> a.user);
@@ -93,6 +103,9 @@ export default function Grades() {
             )}
           </tbody>
         </table>
+        <button onClick={handleClick}>
+  Hello
+</button>
       </div>
     </div>
 
