@@ -16,14 +16,14 @@ import AssignmentEditor from "./Assignments/AssignmentEditor";
 
 export default function Courses({courses} : {courses:any[];}) {
   const { pathname } = useLocation();
-  console.log({pathname})
+
   const pathStrSplit = pathname.split('/')
   const id = pathStrSplit[3]
 
-  console.log({id})
+
   const course = courses.find((course) => course._id === id);
 
-  console.log(course)
+
   return (
     <div id="wd-courses">
       <h2 className="text-danger">

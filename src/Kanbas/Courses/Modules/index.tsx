@@ -23,23 +23,7 @@ export default function Modules() {
    const dispatch = useDispatch();
 
    const [moduleName, setModuleName] = useState("");
-  //  const [modules, setModules] = useState<any[]>(db.modules);
   
-  //  const addModule = () => {
-  //    setModules([ ...modules, { _id: new Date().getTime().toString(),
-  //                                     name: moduleName, course: id, lessons: [] } ]);
-  //    setModuleName("");
-  //  };
-  //  const deleteModule = (moduleId: string) => {
-  //   setModules(modules.filter((m) => m._id !== moduleId));
-  // };
-  // const editModule = (moduleId: string) => {
-  //   setModules(modules.map((m) => (m._id === moduleId ? { ...m, editing: true } : m)));
-  // };
-  // const updateModule = (module: any) => {
-  //   setModules(modules.map((m) => (m._id === module._id ? module : m)));
-  // };
-
    
   return (
 <Provider store={store}>
