@@ -1,72 +1,47 @@
-import { BsGripVertical } from "react-icons/bs";
-import ModulesControls from "./ModulesControls";
-import ModuleControlButtons from "./ModuleControlButtons";
-import LessonControlButtons from "../Modules/LessonControlButtons";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { GrNotes } from "react-icons/gr";
+import React from "react";
+import { Link, useParams } from "react-router-dom";
 import * as db from "../../Database";
-import { useParams, useLocation } from "react-router";
-import "./index.css"
-import { Link } from "react-router-dom";
-
-export default function Assignments() {
-  const { pathname } = useLocation();
-  const pathStrSplit = pathname.split('/')
-  const id = pathStrSplit[3]
-  const assignments = db.assignments;
+import '../../index.css';
+import './index.css';
 
 
-  return (
-
-    <div id="wd-assignments" className="row">
-      <ModulesControls />
-      <br /><br /><br /><br />
+import { GoSearch } from "react-icons/go";
 
 
-      <ul id="wd-assignments-title" className="list-group rounded-0">
-      <li className="wd-module list-group-item p-0 fs-5 border-gray "> 
-        <div className="wd-title p-3 ps-2 bg-secondary">
-          <BsGripVertical className="fs-3" />
-          <IoMdArrowDropdown />
-          ASSIGNMENTS
-          <ModuleControlButtons />
-        
-        </div>
-      </li>
-        {assignments
-          .filter((assignment: any) => assignment.course === id)
-          .map((assignment: any) => (
-           
-            <div>
-            <li className="wd-assignment-list-item list-group-item p-3 ps-1">
-            <div className="d-flex">
-              <BsGripVertical className="me-2 fs-3" />
-              <GrNotes className="bg-light me-2 fs-3" />
-              <div className="ml-3 container">
-              {/* <a className="wd-assignment-link"
-                href="#/Kanbas/Courses/{id}/Assignments/{assignment._id}">
-                {assignment._id}
-              </a> */}
-
-              <Link to={`/Kanbas/Courses/${id}/Assignments/${assignment._id}`} className="list-group-item bold border-0 p-0">
-             <b> {assignment._id}</b>
-              </Link>
-
-              Multiple Modules | <b>Not avaliable until </b>May 17 at 12:00 am |
-              <LessonControlButtons />
-              <br></br>
-              <b>Due </b> May 20 at 11:59pm | 100pts
-              <br></br>
-              </div>
-              </div>
-            </li>
+function Assignments() {
+    const { courseId } = useParams();
+    const assignments = db.assignments;
+    const courseAssignments = assignments.filter(
+        (assignment) => assignment.course === courseId);
+    return (
+        <div>
+            {/* Search bar and buttons above the assignments */}
+            <div className="row">
+                <div className="col-3 mb-3">
+                    <div className="input-group">
+                        <span className="input-group-text wd-input-logo wd-input-group-search-assignment" id="assignment-search-icon">
+                            <GoSearch />
+                        </span>
+                        <input type="text" className="form-control wd-input-textbar" placeholder="Search for Assignment" aria-label="Search for assignment" aria-describedby="assignment-search-icon"></input>
+                    </div>
+                </div>
+                <div className="col"></div>
+                <div className="col-4">Test</div>
             </div>
-          ))}
-
-
-
-
-      </ul>
-    </div>
-  );
+            <div>
+                <h4 className="me-3 wd-assignments-section-title border border-1 border-bottom-0">Assignments</h4>
+                <div className="list-group">
+                    {courseAssignments.map((assignment) => (
+                        <Link
+                            key={assignment._id}
+                            to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
+                            className="list-group-item wd-assignment-list-item me-3">
+                            {assignment.title}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
 }
+export default Assignments;

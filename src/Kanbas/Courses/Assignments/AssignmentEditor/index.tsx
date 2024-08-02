@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import * as db from "../../Database";
+import * as db from "../../../Database";
 import { Navigate, Route, Routes, useLocation } from "react-router";
 
-function AssignmentEditor1() {
 
+function AssignmentEditor() {
 
     const { pathname } = useLocation();
 
@@ -15,11 +15,10 @@ function AssignmentEditor1() {
     const assignment = assignments.filter((a) => a._id== assignmentId && a.course == courseId)[0];
  
 
-
     const navigate = useNavigate();
     const handleSave = () => {
-    
-        navigate(`/Kanbas/Courses/${courseId}/Assignments/`);
+        console.log("Actually saving assignment TBD in later assignments");
+        navigate(`/Kanbas/Courses/${courseId}/Assignments`);
     };
     return (
         <div className="me-5">
@@ -40,4 +39,4 @@ function AssignmentEditor1() {
     );
 }
 
-export default AssignmentEditor1;
+export default AssignmentEditor;

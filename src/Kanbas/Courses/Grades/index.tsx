@@ -17,8 +17,7 @@ export default function Grades() {
   console.log("testtest4")
   const e = [4, ...a]
 const [f] = e
-console.log(f)
-  console.log(f)
+
 
   const handleClick = (parameter = "Hello") => {
     console.log(parameter)
@@ -27,8 +26,8 @@ console.log(f)
   let assignment_ids = db.assignments.filter((a) => a.course == course_id).map(a=> a._id)
   const students = db.enrollments.filter((a) => a.course == course_id).map(a=> a.user);
 
-  console.log("---students", students)
-  console.log("---assignment_ids", assignment_ids)
+  // console.log("---students", students)
+  // console.log("---assignment_ids", assignment_ids)
 
   const zeros = (m, n) => [...Array(m)].map(e => Array(n).fill(0));
 
@@ -103,9 +102,7 @@ console.log(f)
             )}
           </tbody>
         </table>
-        <button onClick={handleClick}>
-  Hello
-</button>
+    
       </div>
     </div>
 
