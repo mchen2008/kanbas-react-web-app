@@ -5,33 +5,39 @@ import {
   addAssignment,
   deleteAssignment,
   updateAssignment,
-  setAssignment,
+  selectAssignment,
 } from "./assignmentsReducer";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useLocation } from "react-router";
-import AssignmentControls from "./AssignmentControls";
 
 function Assignments() {
 
   const { pathname } = useLocation();
   const pathStrSplit = pathname.split('/')
   const courseId = pathStrSplit[3]
-  console.log("pathStrSplit", courseId)
+
+
+  
   const assignments = useSelector((state:any) =>
      state.assignmentsReducer.assignments);
+
   const courseAssignments = assignments.filter(
     (assignment:any) => assignment.course === courseId);
 
 
-    console.log("courseId", courseId)
+    console.log("in out index assignments", assignments)
+
+    const dispatch = useDispatch();
 
 
   console.log("courseassignment", courseAssignments)
-  const assignment = useSelector((state) => state.assignmentsReducer.assignment);
-  const dispatch = useDispatch();
+
+
+  const assignment = useSelector((state: any) => state.assignmentsReducer.assignment);
+
   const navigate = useNavigate();
 
-  const confirmAndDelete = (assignmentId) => {
+  const confirmAndDelete = (assignmentId:string) => {
     const shouldDelete = window.confirm("Are you sure you want to delete this assignment?");
     if (shouldDelete) {
       dispatch(deleteAssignment(assignmentId));

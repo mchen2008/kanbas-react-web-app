@@ -10,6 +10,7 @@ import "./styles.css"
 
 
 import Grades from "./Grades";
+import Editor from "./Assignments/AssignmentEditor/Editor";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 
 

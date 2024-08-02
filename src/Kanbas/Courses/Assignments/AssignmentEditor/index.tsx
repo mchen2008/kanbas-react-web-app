@@ -10,7 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import {
   addAssignment,
   updateAssignment,
-  setAssignment,
+  selectAssignment,
   
 } from "../assignmentsReducer";
 import { assignments } from "../../../Database";
@@ -28,23 +28,18 @@ function AssignmentEditor() {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  // const [dueDate, setDueDate] = useState("2023-01-01");
-  // const [availableFromDate, setAvailableFromDate] = useState("2023-01-01");
-  // const [availableUntilDate, setAvailableUntilDate] = useState("2023-01-01");
-  // const [points, setPoints] = useState("100")
 
-
-  console.log("assignment", assignment)
+ 
   return (
     <div id="wd-assignments-edit-container" className = "row">
   <h2>Assignment Name</h2>
       <input value={assignment.title} 
              className="form-control mb-2" onChange={(e) =>
-              dispatch(setAssignment({ ...assignment, title: e.target.value }))}/>
+              dispatch(selectAssignment({ ...assignment, title: e.target.value, course: courseId}))}/>
        <br />
       <textarea className="form-control mt-3" value={assignment.description} placeholder="New Assignment Description"
               onChange={(e) =>
-                dispatch(setAssignment({ ...assignment, description: e.target.value }))}
+                dispatch(selectAssignment({ ...assignment, description: e.target.value }))}
             />
    <br/>
    <br/>
@@ -59,7 +54,7 @@ function AssignmentEditor() {
           <input type="text" className="form-control"
             id="wd-points" value={assignment.points} 
             onChange={(e) =>
-              dispatch(setAssignment({ ...assignment, points: e.target.value }))}
+              dispatch(selectAssignment({ ...assignment, points: e.target.value }))}
             />
         </div>
       </div>
@@ -71,7 +66,7 @@ function AssignmentEditor() {
             type="date"
             className="form-control datepicker"
             value={assignment.dueDate}
-            onChange={(e) =>  dispatch(setAssignment({ ...assignment, dueDate: e.target.value }))}
+            onChange={(e) =>  dispatch(selectAssignment({ ...assignment, dueDate: e.target.value }))}
           />
       </div>
 
@@ -83,7 +78,7 @@ function AssignmentEditor() {
                 type="date"
                 className="form-control datepicker"
                 value={assignment.availableFromDate}
-                onChange={(e) =>dispatch(setAssignment({ ...assignment, availableFromDate: e.target.value }))}
+                onChange={(e) =>dispatch(selectAssignment({ ...assignment, availableFromDate: e.target.value }))}
               />
 
           </div>
@@ -94,7 +89,7 @@ function AssignmentEditor() {
                 type="date"
                 className="form-control datepicker"
                 value={assignment.availableUntilDate}
-                onChange={(e) => dispatch(setAssignment({ ...assignment, availableUntilDate: e.target.value }))}
+                onChange={(e) => dispatch(selectAssignment({ ...assignment, availableUntilDate: e.target.value }))}
               />
           </div>
       </div>
@@ -112,7 +107,7 @@ function AssignmentEditor() {
         console.log("ass_id", assignment._id)
   
 
-        if (assignments.find((a) => a._id === assignment._id)) {
+        if (assignments.find((a:any) => a._id === assignment._id)) {
           dispatch(updateAssignment(assignment));
         }
         else {

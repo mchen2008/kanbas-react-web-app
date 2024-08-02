@@ -1,21 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as db from "../../Database";
+import { useLocation } from "react-router";
+
+
 
 
 const initialState = {
     assignments: db.assignments,
     assignment: {
-        _id: new Date().getTime().toString(),
         title: "New Assignment",
         description: "New Module Description",
         points: 100,
-        dueDate: "2023-12-12",
-        availableFromDate: "",
-        availableUntilDate: "",
+        dueDate: "2024-1-12",
+        availableFromDate: "2024-1-1",
+        availableUntilDate: "2024-12-22",
+        
 
     },
-
- 
 };
 
 
@@ -27,8 +28,19 @@ const assignmentsSlice = createSlice({
             state.assignments = action.payload;
         },
         addAssignment: (state, action) => {
-            state.assignments = [action.payload, ...state.assignments];
-        },
+            const a_id = "A" + new Date().getTime().toString()
+            // const { pathname } = useLocation();
+            // const pathStrSplit = pathname.split('/')
+            // const courseId = pathStrSplit[3]
+            
+			state.assignments = [
+				{ ...action.payload, _id:  a_id},
+				...state.assignments,
+			];
+            console.log("new added id", a_id)
+            console.log(action.payload)
+		},
+
         deleteAssignment: (state, action) => {
             state.assignments = state.assignments.filter(
                 (assignment) => assignment._id !== action.payload
@@ -44,7 +56,7 @@ const assignmentsSlice = createSlice({
             });
         },
 
-        setAssignment: (state, action) => {
+        selectAssignment: (state, action) => {
             state.assignment = action.payload;
         },
 
@@ -54,7 +66,6 @@ const assignmentsSlice = createSlice({
 });
 
 
-
 export const { addAssignment, deleteAssignment,
-    updateAssignment, setAssignment, setAssignments } = assignmentsSlice.actions;
+    updateAssignment, selectAssignment, setAssignments } = assignmentsSlice.actions;
 export default assignmentsSlice.reducer;
