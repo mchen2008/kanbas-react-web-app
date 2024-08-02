@@ -3,13 +3,17 @@ import Modules from "./Modules";
 // import { courses } from "../Database";
 import Home from "./Home";
 import Assignments from "./Assignments";
-import Editor from "./Assignments/Editor";
+
 import { Navigate, Route, Routes, useParams,useLocation } from "react-router";
 import { FaInbox, FaAlignJustify, FaRegCircleUser } from "react-icons/fa6";
 import "./styles.css"
 
 
 import Grades from "./Grades";
+import AssignmentEditor from "./Assignments/AssignmentEditor";
+
+
+
 export default function Courses({courses} : {courses:any[];}) {
   const { pathname } = useLocation();
   console.log({pathname})
@@ -37,7 +41,10 @@ export default function Courses({courses} : {courses:any[];}) {
           <Route path="/:id/Assignments" element={<Assignments />} />
           <Route path="/:id/Modules" element={<Modules />} />
           <Route path="/:id/Grades" element={<Grades />} />
-          <Route path="/:id/Assignments/:id" element={<Editor />} />
+          <Route path="/:id/Assignments/:id" element={<AssignmentEditor />} />
+				
+
+
         </Routes>
 
       </div>

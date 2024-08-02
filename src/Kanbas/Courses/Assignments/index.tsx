@@ -1,47 +1,57 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import * as db from "../../Database";
-import '../../index.css';
-import './index.css';
+import db from "../../Database";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addAssignment,
+  deleteAssignment,
+  updateAssignment,
+  setAssignment,
+} from "./assignmentsReducer";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
-
-import { GoSearch } from "react-icons/go";
 
 
 function Assignments() {
-    const { courseId } = useParams();
-    const assignments = db.assignments;
-    const courseAssignments = assignments.filter(
-        (assignment) => assignment.course === courseId);
-    return (
-        <div>
-            {/* Search bar and buttons above the assignments */}
-            <div className="row">
-                <div className="col-3 mb-3">
-                    <div className="input-group">
-                        <span className="input-group-text wd-input-logo wd-input-group-search-assignment" id="assignment-search-icon">
-                            <GoSearch />
-                        </span>
-                        <input type="text" className="form-control wd-input-textbar" placeholder="Search for Assignment" aria-label="Search for assignment" aria-describedby="assignment-search-icon"></input>
-                    </div>
-                </div>
-                <div className="col"></div>
-                <div className="col-4">Test</div>
-            </div>
-            <div>
-                <h4 className="me-3 wd-assignments-section-title border border-1 border-bottom-0">Assignments</h4>
-                <div className="list-group">
-                    {courseAssignments.map((assignment) => (
-                        <Link
-                            key={assignment._id}
-                            to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
-                            className="list-group-item wd-assignment-list-item me-3">
-                            {assignment.title}
-                        </Link>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
+  const { courseId } = useParams();
+  const assignments = useSelector((state) => state.assignmentsReducer.assignments);
+  const courseAssignments = assignments.filter(
+    (assignment) => assignment.course === courseId);
+
+  const assignment = useSelector((state) => state.assignmentsReducer.assignment);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const confirmAndDelete = (assignmentId) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this assignment?");
+    if (shouldDelete) {
+      dispatch(deleteAssignment(assignmentId));
+    }
+  };
+  return ( 
+    <div id="wd-assignments-container" className="row">
+      <h4>Assignments for course {courseId}</h4>
+      <div className="list-group row">
+          <button className="btn btn-danger  ms-auto" onClick={() => {dispatch(addAssignment({ title: "New Assignment", course: courseId })); navigate(`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`)}}>
+              + Add Assignment
+            </button>
+        {courseAssignments.map((assignment) => (
+          <Link
+            key={assignment._id}
+            to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
+            className="list-group-item">
+            {assignment.title}
+            <button className="btn btn-sm btn-secondary float-end"
+                onClick={() => dispatch(setAssignment(assignment))}>
+                Edit
+              </button>
+              <button className="btn btn-sm btn-danger float-end"
+                onClick={(e) => {e.preventDefault(); confirmAndDelete(assignment._id)}}>
+                Delete
+              </button>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
 }
 export default Assignments;
