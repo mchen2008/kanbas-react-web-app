@@ -3,7 +3,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useLocation } from "react-router";
-// import '../styles.css';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -111,8 +111,6 @@ function AssignmentEditor() {
             </Link>
             <button onClick={() => {
               console.log("ass_id", assignment._id)
-
-
               if (assignments.find((a: any) => a._id === assignment._id)) {
                 dispatch(updateAssignment(assignment));
               }
