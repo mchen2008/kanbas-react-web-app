@@ -4,12 +4,16 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { GrNotes } from "react-icons/gr";
 import { FaPlus } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
-import LessonControlButtons from "../Modules/LessonControlButtons";
+//import LessonControlButtons from "../Modules/LessonControlButtons";
+import { useState, useEffect } from "react";
+import * as client from "./client";
+
 import {
   addAssignment,
   deleteAssignment,
   updateAssignment,
   selectAssignment,
+  setAssignments,
 } from "./assignmentsReducer";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useLocation } from "react-router";
@@ -21,22 +25,43 @@ function Assignments() {
   const pathStrSplit = pathname.split('/')
   const courseId = pathStrSplit[3]
 
-
-
   const assignments = useSelector((state: any) =>
     state.assignmentsReducer.assignments);
+
+  const fetchAssignments = async () => {
+    const assignments = await client.findAssignmentsForCourse(courseId as string);
+    dispatch(setAssignments(assignments));
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
+
 
   const courseAssignments = assignments.filter(
     (assignment: any) => assignment.course === courseId);
 
 
-  console.log("in out index assignments", assignments)
+  //console.log("in out index assignments", assignments)
 
   const dispatch = useDispatch();
 
+  const createAssignment = async (assignment: any) => {
+    const newAssignment = await client.createAssignment(courseId as string, assignment);
+    dispatch(addAssignment(newAssignment));
+  };
 
-  console.log("courseassignment", courseAssignments)
+  const removeAssignment = async (assignmentId: string) => {
+    await client.deleteAssignment(assignmentId);
+    console.log("remove assignmentId:", assignmentId)
+    dispatch(deleteAssignment(assignmentId));
+  };
 
+
+  const chooseAssignment = async (assignmentId: string) => {
+    await client.findAssignmentsForCourse(courseId);
+    console.log("find assignmentId:", assignmentId)
+    dispatch(selectAssignment(assignmentId));
+  };
 
   const assignment = useSelector((state: any) => state.assignmentsReducer.assignment);
 
@@ -45,9 +70,18 @@ function Assignments() {
   const confirmAndDelete = (assignmentId: string) => {
     const shouldDelete = window.confirm("Are you sure you want to delete this assignment?");
     if (shouldDelete) {
-      dispatch(deleteAssignment(assignmentId));
-    }
+     //dispatch(deleteAssignment(assignmentId));
+      removeAssignment(assignmentId); 
+  }};
+
+
+
+  const saveAssignment = async (assignment: any) => {
+    const status = await client.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
   };
+
+
   return (
 
     <div id="wd-assignments" className="row">
@@ -63,9 +97,12 @@ function Assignments() {
 
         <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end "
           onClick={() => {
-            dispatch(
-              selectAssignment({ _id: new Date().getTime().toString(), title: "New Assignment", course: courseId }));
-            navigate(`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`)
+            // dispatch(
+            //   selectAssignment({ _id: new Date().getTime().toString(), title: "New Assignment", course: courseId }));
+            //createAssignment({ _id: new Date().getTime().toString(), title: "New Assignment", course: courseId });
+            createAssignment({});
+
+           // navigate(`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`)
           }}>
           <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
           Assignment
@@ -101,12 +138,15 @@ function Assignments() {
                 <div className="ml-3 container">
 
                   <Link key={assignment._id}
-                    to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`} 
+                    to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
                     className="list-group-item bold border-0 p-0">
                     <b> {assignment._id}</b>
 
                     <button className="btn btn-sm btn-secondary float-end"
-                      onClick={() => dispatch(selectAssignment(assignment))}>
+                      onClick={() => 
+                      // dispatch(selectAssignment(assignment))
+                      chooseAssignment(assignment._id)
+                       }>
                       Edit
                     </button>
                     <button className="btn btn-sm btn-danger float-end me-1"
