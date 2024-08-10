@@ -8,22 +8,22 @@ export const findAssignmentsForCourse = async (courseId: string) => {
 
   return response.data;
 };
-export const createAssignment = async (courseId: string, Assignment: any) => {
-  console.log("inside create ass", Assignment._id)
-  console.log(`${Assignments_API}/${courseId}/Assignments/`)
+export const createAssignment = async (courseId: string, assigment: any) => {
+  //console.log(`${Assignments_API}/${courseId}/Assignments/`)
     const response = await axios.post( `${Assignments_API}/${courseId}/Assignments/`,
-       Assignment);
+      assigment);
     return response.data;
   };
 
-  // export const findAssignment = async (courseId: string, AssignmentId: any) => {
+  
+  export const findAssignment = async (AssignmentId: any) => {
     
-  //   console.log("find ass", `${Assignments_API}/${courseId}/Assignments/${AssignmentId}`)
+    //console.log("find ass", `${REMOTE_SERVER}/api/assignments/${AssignmentId}`)
 
-  //   const response = await axios.get( `${Assignments_API}/${courseId}/Assignments/${AssignmentId}`,AssignmentId);
+    const response = await axios.get( `${REMOTE_SERVER}/api/assignments/${AssignmentId}`,AssignmentId);
    
-  //   return response.data;
-  // };
+    return response.data;
+  };
 
 
 
@@ -33,6 +33,8 @@ export const deleteAssignment = async (AssignmentId: string) => {
     .delete(`${REMOTE_SERVER}/api/assignments/${AssignmentId}`);
   return response.data;
 };
+
+
 export const updateAssignment = async (Assignment: any) => {
   const response = await axios.
     put(`${REMOTE_SERVER}/api/assignments/${Assignment._id}`, Assignment);

@@ -5,28 +5,25 @@ import { GrNotes } from "react-icons/gr";
 import { FaPlus } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 //import LessonControlButtons from "../Modules/LessonControlButtons";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import * as client from "./client";
 
 import {
-  addAssignment,
   deleteAssignment,
-  updateAssignment,
   selectAssignment,
   setAssignments,
+  addAssignment
 } from "./assignmentsReducer";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import AssignmentButton from "./AssignmentButtons";
+
 
 function Assignments() {
 
   const { pathname } = useLocation();
   const pathStrSplit = pathname.split('/')
   const courseId = pathStrSplit[3]
-
-  const assignments = useSelector((state: any) =>
-    state.assignmentsReducer.assignments);
 
   const fetchAssignments = async () => {
     const assignments = await client.findAssignmentsForCourse(courseId as string);
@@ -37,8 +34,8 @@ function Assignments() {
   }, []);
 
 
-  const courseAssignments = assignments.filter(
-    (assignment: any) => assignment.course === courseId);
+  const assignments = useSelector((state: any) => state.assignmentsReducer.assignments);
+  const courseAssignments = assignments.filter((assignment: any) => assignment.course === courseId);
 
 
   //console.log("in out index assignments", assignments)
@@ -46,24 +43,35 @@ function Assignments() {
   const dispatch = useDispatch();
 
   const createAssignment = async (assignment: any) => {
-    const newAssignment = await client.createAssignment(courseId as string, assignment);
+    const newAssignment = await client.createAssignment(courseId as string, assignment as any);
     dispatch(addAssignment(newAssignment));
   };
 
+  const newAssignment = ({
+		title: "New Assignment",
+		description: "New Assignment Description",
+		points: 100,
+		dueDate: "2023-12-12",
+		availableFromDate: "",
+		availableUntilDate: "",
+		_id: "",
+	});
+	const [selectedAssignment, setSelectedAssignment] =
+		React.useState(newAssignment);
+
+
+
   const removeAssignment = async (assignmentId: string) => {
     await client.deleteAssignment(assignmentId);
-    console.log("remove assignmentId:", assignmentId)
     dispatch(deleteAssignment(assignmentId));
   };
 
-
-  const chooseAssignment = async (assignmentId: string) => {
-    await client.findAssignmentsForCourse(courseId);
-    console.log("find assignmentId:", assignmentId)
+  const chooseAssignment= async ( assignmentId: string) => {
+    await client.findAssignment(assignmentId);
     dispatch(selectAssignment(assignmentId));
   };
 
-  const assignment = useSelector((state: any) => state.assignmentsReducer.assignment);
+ // const assignment = useSelector((state: any) => state.assignmentsReducer.assignment);
 
   const navigate = useNavigate();
 
@@ -76,10 +84,10 @@ function Assignments() {
 
 
 
-  const saveAssignment = async (assignment: any) => {
-    const status = await client.updateAssignment(assignment);
-    dispatch(updateAssignment(assignment));
-  };
+  // const saveAssignment = async (assignment: any) => {
+  //   const status = await client.updateAssignment(assignment);
+  //   dispatch(updateAssignment(assignment));
+  // };
 
 
   return (
@@ -97,10 +105,10 @@ function Assignments() {
 
         <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end "
           onClick={() => {
-            // dispatch(
-            //   selectAssignment({ _id: new Date().getTime().toString(), title: "New Assignment", course: courseId }));
+             dispatch(
+               selectAssignment({ ...newAssignment, course: courseId }));
             //createAssignment({ _id: new Date().getTime().toString(), title: "New Assignment", course: courseId });
-            createAssignment({});
+             createAssignment({});
 
            // navigate(`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`)
           }}>
@@ -144,8 +152,8 @@ function Assignments() {
 
                     <button className="btn btn-sm btn-secondary float-end"
                       onClick={() => 
-                      // dispatch(selectAssignment(assignment))
-                      chooseAssignment(assignment._id)
+                       dispatch(selectAssignment(assignment._id))
+                    //  chooseAssignment(assignment._id)
                        }>
                       Edit
                     </button>

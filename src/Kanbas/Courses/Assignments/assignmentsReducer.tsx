@@ -23,11 +23,11 @@ const assignmentsSlice = createSlice({
         setAssignments: (state, action) => {
             state.assignments = action.payload;
         },
+        
         addAssignment: (state, action) => {
            console.log("in add assignment", action.payload)
            state.assignments = [
-            { ...action.payload, _id: "A" + new Date().getTime().toString() },
-            ...state.assignments,
+            action.payload, ...state.assignments,
         ];
     
         },
@@ -37,11 +37,18 @@ const assignmentsSlice = createSlice({
                 (assignment: any) => assignment._id !== action.payload
             );
         },
+
+
         updateAssignment: (state, action) => {
             state.assignments = state.assignments.map((assignment:any) => {
+               console.log("in update assigment", action.payload)
+               console.log("id assigment", assignment._id)
+
                 if (assignment._id === action.payload._id) {
+                    console.log("return", action.payload)
                     return action.payload;
                 } else {
+                    console.log("return 2", assignment)
                     return assignment;
                 }
             });
