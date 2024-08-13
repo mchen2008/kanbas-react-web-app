@@ -3,7 +3,7 @@ import "./index.css";
 import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
 export default function CoursesNavigation() {
 
-   const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades"];
+   const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades", "People"];
    const { pathname } = useLocation();
 
    const pathStrSplit = pathname.split('/')

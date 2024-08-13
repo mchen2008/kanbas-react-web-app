@@ -10,11 +10,8 @@ import "./styles.css"
 
 
 import Grades from "./Grades";
-import Editor from "./Assignments/AssignmentEditor/Editor";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
-
-
-
+import PeopleTable from "./People/Table";
 export default function Courses({courses} : {courses:any[];}) {
   const { pathname } = useLocation();
 
@@ -43,9 +40,9 @@ export default function Courses({courses} : {courses:any[];}) {
           <Route path="/:id/Modules" element={<Modules />} />
           <Route path="/:id/Grades" element={<Grades />} />
           <Route path="/:id/Assignments/:id" element={<AssignmentEditor />} />
-				
+				  <Route path="/:id/People" element={<PeopleTable />} />
 
-
+          <Route path="/:id/People/:uid" element={<PeopleTable />} />
         </Routes>
 
       </div>

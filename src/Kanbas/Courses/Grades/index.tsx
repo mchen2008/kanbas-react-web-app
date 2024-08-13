@@ -41,9 +41,9 @@ const [f] = e
     console.log("username", input_table[j][0] );
 
     for (let i = 0; i < assignment_ids.length; i++) {
-      console.log("-----------inside for loop:------------", assignment_ids[i]);
+    //  console.log("-----------inside for loop:------------", assignment_ids[i]);
 
-      console.log(grades.filter((a) => a.student == students[j] && a.assignment == assignment_ids[i]));
+     // console.log(grades.filter((a) => a.student == students[j] && a.assignment == assignment_ids[i]));
       const k = grades.findIndex((a) => a.student == students[j] && a.assignment == assignment_ids[i]);
       
       console.log("k", k)
@@ -55,8 +55,8 @@ const [f] = e
  
     }
 }
-  console.log("-----------input table:------------")
-  console.log(input_table)
+ // console.log("-----------input table:------------")
+  //console.log(input_table)
 
 
 
