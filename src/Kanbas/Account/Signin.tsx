@@ -4,8 +4,6 @@ import * as client from "./client";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
 
-
-
 export default function Signin() {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
@@ -20,6 +18,7 @@ export default function Signin() {
       dispatch(setCurrentUser(currentUser));
       navigate("/Kanbas/Account/Profile");
   } catch (err: any) {
+    console.log("err", error)
     setError(err.response.data.message);
   }
 

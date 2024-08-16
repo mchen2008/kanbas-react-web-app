@@ -95,7 +95,10 @@ export default function PeopleTable() {
               </td>
               <td className="wd-login-id">{user.loginId}</td>
               <td className="wd-section">{user.section}</td>
+              {/* <Link to={`/Kanbas/Courses/${cid}/People/${user._id}`} > */}
+           
               <td className="wd-role">{user.role}</td>
+              {/* </Link> */}
               <td className="wd-last-activity">{user.lastActivity}</td>
               <td className="wd-total-activity">{user.totalActivity}</td>
             </tr>
