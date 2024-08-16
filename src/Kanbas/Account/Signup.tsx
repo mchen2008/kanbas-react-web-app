@@ -16,6 +16,7 @@ export default function Signup() {
             navigate("/Kanbas/Account/Profile");
       
         } catch (err: any) {
+            console.log("err", error)
             setError(err.response.data.message);
         }
     };

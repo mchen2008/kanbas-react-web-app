@@ -12,6 +12,8 @@ export default function Signin() {
 
   const [credentials, setCredentials] = useState<any>({});
   const navigate = useNavigate();
+  console.log("in signin.tsx", credentials)
+
   const signin = async () => {
     try {
       const currentUser =  await client.signin(credentials);
