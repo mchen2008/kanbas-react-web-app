@@ -1,6 +1,7 @@
 import axios from "axios";
 export const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 export const USERS_API = `${REMOTE_SERVER}/api/users`;
+console.log("remote_server:", REMOTE_SERVER)
 
 export const findAllUsers = async () => {
   const response = await axios.get(USERS_API);
@@ -23,7 +24,6 @@ export const deleteUser = async (userId: string) => {
   const response = await axios.delete( `${USERS_API}/${userId}` );
   return response.data;
 };
-
 
 export const updateUser = async (user: any) => {
   const response = await axios.put(`${USERS_API}/${user._id}`, user);

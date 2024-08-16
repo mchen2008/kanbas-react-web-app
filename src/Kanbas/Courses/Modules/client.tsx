@@ -2,6 +2,7 @@ import axios from "axios";
 const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 const COURSES_API = `${REMOTE_SERVER}/api/courses`;
 
+//console.log("remote_server:", REMOTE_SERVER)
 export const findModulesForCourse = async (courseId: string) => {
     //console.log("check module api", `${COURSES_API}/${courseId}/modules`)
   const response = await axios
